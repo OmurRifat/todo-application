@@ -1,24 +1,43 @@
+/* eslint-disable no-undef */
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 import { useForm } from 'react-hook-form';
+import img from '../assets/notepad.png'
 
 const AssignTask = () => {
+    const { allEmployee } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
-        formState: { errors },
     } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
-        <div>
+        <div className=''>
             <h4>Assign A Task.</h4>
-            <form onSubmit={ handleSubmit((data) => console.log(data)) }>
-                <input { ...register('firstName') } />
-                <input { ...register('lastName', { required: true }) } />
-                { errors.lastName && <p>Last name is required.</p> }
-                <input { ...register('age', { pattern: /\d+/ }) } />
-                { errors.age && <p>Please enter number for age.</p> }
-                <input type="submit" />
-            </form>
+            <div className=' grid grid-cols-2 items-center m-20'>
+                <div>
+                    <img className='' src={ `${img}` } alt="" />
+                </div>
+                <div className=' border border-secondary rounded-xl w-full bg-tertiary bg-opacity-40'>
+                    <form onSubmit={ handleSubmit(onSubmit) } className=''>
+                        <legend className=' mb-2 mt-4'>Select an employee</legend>
+                        <select required { ...register("name") } className="select w-full max-w-sm mb-4">
+                            {
+                                allEmployee?.map(employee => <option key={ employee.id } value={ employee.name }>{ employee.email }-{ employee.name }</option>)
+                            }
+                        </select>
+                        <legend className=' mb-2'>Task ID</legend>
+                        <input required { ...register("id") } type="text" placeholder="Give the ID of your task" className="input w-full max-w-sm mb-4" />
+                        <legend className=' mb-2'>Task Name</legend>
+                        <input required { ...register("taskName") } type="text" placeholder="Give a title of your task" className="input w-full max-w-sm mb-4" /> <br />
+                        <button className=' btn btn-primary mb-10' type='submit'>Assign</button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

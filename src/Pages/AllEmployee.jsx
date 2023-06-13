@@ -1,15 +1,10 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 import Employee from './Employee';
 
 const AllEmployee = () => {
-    const [allEmployee, setAllEmployee] = useState([]);
-
-    useEffect(() => {
-        fetch('employeData.json')
-            .then(res => res.json())
-            .then(data => setAllEmployee(data))
-    }, [])
+    const { allEmployee } = useContext(AuthContext);
     return (
         <div className=' grid grid-cols-2 gap-4 me-4'>
             {
