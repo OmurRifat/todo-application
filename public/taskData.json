@@ -1,0 +1,32 @@
+[
+    {
+        "taskId": "1",
+        "taskName": "Task 1",
+        "taskDescription": "Task 1 Description",
+        "taskStatus": "In Progress",
+        "taskPriority": "High",
+        "assignedTo": [
+            {
+                "userId": "1",
+                "userName": "John"
+            },
+            {
+                "userId": "2",
+                "userName": "Smith"
+            }
+        ]
+    },
+    {
+        "taskId": "2",
+        "taskName": "Task 2",
+        "taskDescription": "Task 2 Description",
+        "taskStatus": "In Progress",
+        "taskPriority": "High",
+        "assignedTo": [
+            {
+                "userId": "1",
+                "userName": "John"
+            }
+        ]
+    }
+]
