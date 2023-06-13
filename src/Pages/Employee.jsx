@@ -13,7 +13,7 @@ const Employee = ({ employee }) => {
         setIsOpen(true)
     }
     return (
-        <div className="card card-side bg-secondary bg-opacity-40 shadow-xl p-2">
+        <div className="card card-side bg-tertiary bg-opacity-70 shadow-xl p-2">
             <figure><img className=' rounded-full w-36' src={ `${imgUrl}` } alt="Movie" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{ name }</h2>

@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
-    const authInfo = { data: "Rifat" };
+    const authInfo = { data: "context api is working" };
     return (
         <AuthContext.Provider value={ authInfo }>
             { children }
