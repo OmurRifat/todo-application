@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "name": "John",
+        "age": "20",
+        "designation": "Software Engineer",
+        "salary": "10000",
+        "email": "john@gmail.com",
+        "phone": "1234567890"
+    },
+    {
+        "id": "2",
+        "name": "Smith",
+        "age": "25",
+        "designation": "Senior Software Engineer",
+        "salary": "20000",
+        "email": "smith@gmail.com",
+        "phone": "1234567890"
+    },
+    {
+        "id": "3",
+        "name": "Lee",
+        "age": "30",
+        "designation": "Project Manager",
+        "salary": "30000",
+        "email": "lee@gmail.com",
+        "phone": "1234567890"
+    },
+    {
+        "id": "4",
+        "name": "Mark",
+        "age": "35",
+        "designation": "Senior Project Manager",
+        "salary": "40000",
+        "email": "mark@gmail.com",
+        "phone": "1234567890"
+    },
+    {
+        "id": "5",
+        "name": "David",
+        "age": "40",
+        "designation": "Senior Project Manager",
+        "salary": "50000",
+        "email": "david@gmail.com",
+        "phone": "1234567890"
+    }
+]
