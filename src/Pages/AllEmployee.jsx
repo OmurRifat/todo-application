@@ -11,7 +11,7 @@ const AllEmployee = () => {
             .then(data => setAllEmployee(data))
     }, [])
     return (
-        <div>
+        <div className=' grid grid-cols-2 gap-4 me-4'>
             {
                 allEmployee.map(employee => <Employee
                     key={ employee.id }

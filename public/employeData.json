@@ -2,6 +2,7 @@
     {
         "id": "1",
         "name": "John",
+        "imgUrl": "https://www.w3schools.com/howto/img_avatar.png",
         "age": "20",
         "designation": "Software Engineer",
         "salary": "10000",
@@ -11,6 +12,7 @@
     {
         "id": "2",
         "name": "Smith",
+        "imgUrl": "https://www.w3schools.com/howto/img_avatar.png",
         "age": "25",
         "designation": "Senior Software Engineer",
         "salary": "20000",
@@ -20,6 +22,7 @@
     {
         "id": "3",
         "name": "Lee",
+        "imgUrl": "https://www.w3schools.com/howto/img_avatar.png",
         "age": "30",
         "designation": "Project Manager",
         "salary": "30000",
@@ -29,6 +32,7 @@
     {
         "id": "4",
         "name": "Mark",
+        "imgUrl": "https://www.w3schools.com/howto/img_avatar.png",
         "age": "35",
         "designation": "Senior Project Manager",
         "salary": "40000",
@@ -38,6 +42,7 @@
     {
         "id": "5",
         "name": "David",
+        "imgUrl": "https://www.w3schools.com/howto/img_avatar.png",
         "age": "40",
         "designation": "Senior Project Manager",
         "salary": "50000",
