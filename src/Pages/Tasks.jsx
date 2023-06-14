@@ -9,7 +9,7 @@ const Tasks = () => {
         setTaskData(JSON.parse(localStorage.getItem('task')));
     }, [])
     return (
-        <div className=' grid grid-cols-2 gap-4'>
+        <div className=' grid lg:grid-cols-3 lg:gap-4 lg:me-4 grid-cols-1 gap-2 '>
             {
                 taskData ? taskData?.map(task => <Task
                     key={ task.id }

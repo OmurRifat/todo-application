@@ -1,12 +1,18 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const MainLayout = () => {
-    const [activeLink, setActiveLink] = useState('tasks');
+    const [activeLink, setActiveLink] = useState('');
+    const location = useLocation();
+    useEffect(() => {
+        const path = location.pathname.split('/')[1];
+        setActiveLink(path);
+    }, [location.pathname]);
     const handleLinkClick = (link) => {
         setActiveLink(link);
     }
+
 
     return (
         <div className="drawer lg:drawer-open">
