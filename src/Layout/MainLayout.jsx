@@ -15,7 +15,7 @@ const MainLayout = () => {
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-secondary text-base-content">
                     {/* Sidebar content here */ }
-                    <Link to="/" className=' bg-tertiary rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3'>Tasks</Link>
+                    <Link to="/tasks" className=' bg-tertiary rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3'>Tasks</Link>
                     <Link to="/assign-task" className=' bg-tertiary rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3'>Assign Task</Link>
                     <Link to="/all-employee" className=' bg-tertiary rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3'>All Employee</Link>
                 </ul>

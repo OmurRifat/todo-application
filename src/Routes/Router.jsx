@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
-import Home from "../Pages/Home";
 import AllEmployee from "../Pages/AllEmployee";
 import AssignTask from "../Pages/AssignTask";
+import Tasks from "../Pages/Tasks";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Tasks></Tasks>
             },
             {
                 path: '/all-employee',
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/assign-task',
                 element: <AssignTask></AssignTask>
+            },
+            {
+                path: '/tasks',
+                element: <Tasks></Tasks>
             }
         ]
     }

@@ -8,7 +8,7 @@ const AllEmployee = () => {
     return (
         <div className=' grid grid-cols-2 gap-4 me-4'>
             {
-                allEmployee.map(employee => <Employee
+                allEmployee?.map(employee => <Employee
                     key={ employee.id }
                     employee={ employee }></Employee>)
             }

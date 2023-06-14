@@ -10,8 +10,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
     }
     return (
         <div
-            tabIndex="-1"
-            className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-10  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+            className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-40  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
             <div className="relative w-full max-w-md max-h-full">
                 <div className="relative bg-[#80bfb8] rounded-xl shadow">
@@ -19,7 +18,6 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                         onClick={ closeModal }
                         type="button"
                         className="absolute top-3  right-2.5 text-[red] bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                        data-modal-hide="authentication-modal"
                     >
                         <svg
                             aria-hidden="true"

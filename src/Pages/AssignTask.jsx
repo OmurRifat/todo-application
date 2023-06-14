@@ -40,7 +40,7 @@ const AssignTask = () => {
                     <form onSubmit={ handleSubmit(onSubmit) } className=''>
                         <legend className=' mb-2 mt-4'>Select an employee</legend>
                         <select required { ...register("name") } className="select w-full max-w-sm mb-4">
-                            <option defaultValue={ "Please select an employee" } disabled >Please select an employee</option>
+                            <option selected disabled >Please select an employee</option>
                             {
                                 allEmployee?.map(employee => <option key={ employee.id } value={ employee.name }>{ employee.email }-{ employee.name }</option>)
                             }
