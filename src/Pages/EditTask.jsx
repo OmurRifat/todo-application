@@ -22,12 +22,12 @@ const EditTask = ({ setIsOpen, isOpen, task }) => {
         data.id = id;
         //get the same id data from local storage
         let localData = JSON.parse(localStorage.getItem('task'));
-        //filter out the data with same id
-        let newData = localData.filter((item) => item.id !== id);
-        //update the data with same id
-        newData = [...newData, data];
+        //filter the data & store the index number to update in the same index
+        let index = localData.findIndex(task => task.id === id);
+        //update the data
+        localData[index] = data;
         //set the updated data to local storage
-        localStorage.setItem('task', JSON.stringify(newData));
+        localStorage.setItem('task', JSON.stringify(localData));
         toast.success("Task Updated Successfully");
         reset();
         closeModal();
