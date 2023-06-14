@@ -111,7 +111,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                             }
                                             {/* small edit btn */ }
                                             {
-                                                task.length > 0 ? <Link
+                                                task?.length > 0 ? <Link
                                                     type="button"
                                                     to="/tasks"
                                                     className=" bg-red-600 text-white font-bold py-1 px-4 rounded-xl mt-4"
