@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const DetailsModal = ({ setIsOpen, employee }) => {
@@ -8,6 +9,9 @@ const DetailsModal = ({ setIsOpen, employee }) => {
     function closeModal() {
         setIsOpen(false)
     }
+    //get the data from local storage according to the name
+    const taskData = JSON.parse(localStorage.getItem('task'));
+    const task = taskData?.filter(task => task.name === name);
     return (
         <div
             className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-40  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -90,6 +94,33 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                         </th>
 
                                         <td className="text-black px-8 py-4 ">{ phone }</td>
+                                    </tr>
+                                    <tr className="border-b border-gray-200 dark:border-gray-700">
+                                        <th
+                                            scope="row"
+                                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                                        >
+                                            Assigned Task:
+                                        </th>
+
+                                        <td className="text-black px-8 py-4 ">
+                                            {
+                                                task?.map(task => <li
+                                                    key={ task.id }
+                                                >{ task.taskName }</li>)
+                                            }
+                                            {/* small edit btn */ }
+                                            {
+                                                task.length > 0 ? <Link
+                                                    type="button"
+                                                    to="/tasks"
+                                                    className=" bg-red-600 text-white font-bold py-1 px-4 rounded-xl mt-4"
+                                                >
+                                                    Edit
+                                                </Link> :
+                                                    <p>No task assigned.</p>
+                                            }
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

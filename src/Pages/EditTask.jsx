@@ -37,7 +37,7 @@ const EditTask = ({ setIsOpen, isOpen, task }) => {
         <div
             className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-10  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
-            <div className="relative w-full max-w-md max-h-full">
+            <div className="relative w-full max-w-md max-h-full text-center">
                 <div className="relative bg-tertiary py-8 rounded-xl shadow">
                     <button
                         onClick={ closeModal }

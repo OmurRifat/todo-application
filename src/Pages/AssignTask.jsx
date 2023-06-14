@@ -36,7 +36,7 @@ const AssignTask = () => {
                 <div>
                     <img className='' src={ `${img}` } alt="" />
                 </div>
-                <div className=' border border-secondary rounded-xl w-full bg-tertiary bg-opacity-40'>
+                <div className=' border border-secondary rounded-xl w-full bg-tertiary bg-opacity-40 text-center'>
                     <form onSubmit={ handleSubmit(onSubmit) } className=''>
                         <legend className=' mb-2 mt-4'>Select an employee</legend>
                         <select required { ...register("name") } className="select w-full max-w-sm mb-4">
