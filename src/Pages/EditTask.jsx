@@ -31,6 +31,7 @@ const EditTask = ({ setIsOpen, isOpen, task }) => {
         toast.success("Task Updated Successfully");
         reset();
         closeModal();
+        window.location.reload();
     };
     return (
         <div

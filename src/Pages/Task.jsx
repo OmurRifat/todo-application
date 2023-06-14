@@ -10,6 +10,14 @@ const Task = ({ task }) => {
     function openModal() {
         setIsOpen(true)
     }
+    function deleteTask() {
+        if (window.confirm('Are you sure you want to delete this task?')) {
+            let taskData = JSON.parse(localStorage.getItem('task'));
+            let newTaskData = taskData.filter(task => task.id !== id);
+            localStorage.setItem('task', JSON.stringify(newTaskData));
+            window.location.reload();
+        }
+    }
     return (
         <div>
             <div className="card w-96 h-56 bg-tertiary bg-opacity-70 p-2 shadow-xl">
@@ -23,6 +31,13 @@ const Task = ({ task }) => {
                             className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                         >
                             Edit Task
+                        </button>
+                        <button
+                            type="button"
+                            onClick={ deleteTask }
+                            className="rounded-md bg-rose-600 bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                        >
+                            Delete Task
                         </button>
                         {
                             isOpen && <EditTask
