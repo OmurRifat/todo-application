@@ -10,7 +10,7 @@ const AllEmployee = () => {
     return (
         <div className=' grid lg:grid-cols-2 gap-4 lg:me-4 grid-cols-1 me-6'>
             {
-                allEmployee.length > 0 ? allEmployee.map(employee => <Employee
+                allEmployee?.length > 0 ? allEmployee?.map(employee => <Employee
                     key={ employee.employeeId }
                     employee={ employee }></Employee>)
                     :
