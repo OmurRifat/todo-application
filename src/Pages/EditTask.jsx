@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { Dialog, Transition } from '@headlessui/react';
+import Input from './components/Input';
+import TextArea from './components/TextArea';
 
 const EditTask = ({ setIsOpen, isOpen, task }) => {
-    const { name, id, taskName, taskDescription } = task;
+    const { employeeId, taskId, taskName, taskDescription } = task;
     const { allEmployee } = useContext(AuthContext);
+    const [employeeData, setEmployeeData] = useState([]);
     const {
         register,
         handleSubmit,
@@ -19,20 +22,39 @@ const EditTask = ({ setIsOpen, isOpen, task }) => {
         setIsOpen(false)
     }
     const onSubmit = (data) => {
-        data.id = id;
-        //get the same id data from local storage
+        if (data.employeeId == "") data.employeeId = employeeId;
+        task.taskName = data.taskName;
+        task.taskDescription = data.taskDescription;
+        task.employeeId = data.employeeId;
+        console.log(task);
+        //update the task in localsotrage
         let localData = JSON.parse(localStorage.getItem('task'));
-        //filter the data & store the index number to update in the same index
-        let index = localData.findIndex(task => task.id === id);
-        //update the data
-        localData[index] = data;
-        //set the updated data to local storage
+        let index = localData.findIndex(task => task.taskId == taskId);
+        localData[index] = task;
         localStorage.setItem('task', JSON.stringify(localData));
         toast.success("Task Updated Successfully");
         reset();
         closeModal();
-        window.location.reload();
+        // data.id = id;
+        // //get the same id data from local storage
+        // let localData = JSON.parse(localStorage.getItem('task'));
+        // //filter the data & store the index number to update in the same index
+        // let index = localData.findIndex(task => task.id === id);
+        // //update the data
+        // localData[index] = data;
+        // //set the updated data to local storage
+        // localStorage.setItem('task', JSON.stringify(localData));
+        // toast.success("Task Updated Successfully");
+        // reset();
+        // closeModal();
+        // window.location.reload();
     };
+    useEffect(() => {
+        const employeeData = JSON.parse(localStorage.getItem('employee'));
+        const employee = employeeData.find(employee => employee.employeeId == employeeId);
+        setEmployeeData(employee);
+    }, [employeeId])
+
     return (
         <div
             className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-10  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -61,18 +83,16 @@ const EditTask = ({ setIsOpen, isOpen, task }) => {
                     </button>
                     <form onSubmit={ handleSubmit(onSubmit) } className=''>
                         <legend className=' mb-2 mt-4'>Select an employee</legend>
-                        <select required { ...register("name") } className="select w-full max-w-sm mb-4">
-                            <option selected disabled >{ name }</option>
+                        <select required { ...register("employeeId") } className="select w-full max-w-sm mb-4">
+                            <option defaultValue={ employeeData.employeeId } >{ employeeData?.employeeName }</option>
                             {
-                                allEmployee?.map(employee => <option key={ employee.id } value={ employee.name }>{ employee.email }-{ employee.name }</option>)
+                                allEmployee?.map(employee => <option key={ employee.employeeId } value={ employee.employeeId }>{ employee.employeeEmail }-{ employee.employeeName }</option>)
                             }
                         </select>
-                        <legend className=' mb-2'>Task ID</legend>
-                        <input required { ...register("id") } type="text" defaultValue={ `${id}` } disabled className="input w-full max-w-sm mb-4" />
-                        <legend className=' mb-2'>Task Name</legend>
-                        <input required { ...register("taskName") } type="text" defaultValue={ `${taskName}` } className="input w-full max-w-sm mb-4" />
-                        <legend className=' mb-2'>Task Description</legend>
-                        <textarea required { ...register("taskDescription") } className="textarea w-full max-w-sm mb-4" defaultValue={ `${taskDescription}` }></textarea>
+                        <Input filedName='Task Name' register={ register } defaultValue={ `${taskName}` } registeredName="taskName" type='text' placeholder='Please re-enter the task name' />
+                        <TextArea filedName='Task Description' register={ register } defaultValue={ `${taskDescription}` } registeredName="taskDescription" type='text' placeholder='Please re-enter the task description' />
+                        {/* <legend className=' mb-2'>Task Description</legend>
+                        <textarea required { ...register("taskDescription") } className="textarea w-full max-w-sm mb-4" defaultValue={ `${taskDescription}` }></textarea> */}
                         <br />
                         <button className=' btn btn-primary mb-10' type='submit'>Assign</button>
                     </form>

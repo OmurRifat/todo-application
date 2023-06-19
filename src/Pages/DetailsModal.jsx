@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line react/prop-types
 const DetailsModal = ({ setIsOpen, employee }) => {
     // eslint-disable-next-line react/prop-types
-    const { name, imgUrl, designation, email, phone } = employee;
+    const { employeeName, photoUrl, employeeDesignation, employeeEmail, employeeNumber, employeeId } = employee;
     function closeModal() {
         setIsOpen(false)
     }
     //get the data from local storage according to the name
     const taskData = JSON.parse(localStorage.getItem('task'));
-    const task = taskData?.filter(task => task.name === name);
+    const task = taskData?.filter(task => task.employeeId == employeeId);
     return (
         <div
             className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-40  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -47,7 +47,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                             />
                             <div className="flex justify-center -mt-32">
                                 <img
-                                    src={ imgUrl }
+                                    src={ photoUrl }
                                     className="rounded-full w-48 border-red-3 h-48 -mt-3"
                                     alt="profile"
                                 />
@@ -63,7 +63,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                             Name:
                                         </th>
 
-                                        <td className="text-black px-8 py-4 ">  { name }</td>
+                                        <td className="text-black px-8 py-4 ">  { employeeName }</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 dark:border-gray-700">
                                         <th
@@ -73,7 +73,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                             Designation:
                                         </th>
 
-                                        <td className="text-black px-8 py-4 "> { designation }</td>
+                                        <td className="text-black px-8 py-4 "> { employeeDesignation }</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 dark:border-gray-700">
                                         <th
@@ -83,7 +83,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                             Email:
                                         </th>
 
-                                        <td className="text-black px-8 py-4 ">{ email }</td>
+                                        <td className="text-black px-8 py-4 ">{ employeeEmail }</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 dark:border-gray-700">
                                         <th
@@ -93,7 +93,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                             Phone:
                                         </th>
 
-                                        <td className="text-black px-8 py-4 ">{ phone }</td>
+                                        <td className="text-black px-8 py-4 ">{ employeeNumber }</td>
                                     </tr>
                                     <tr className="border-b border-gray-200 dark:border-gray-700">
                                         <th

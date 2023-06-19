@@ -3,6 +3,7 @@ import MainLayout from "../Layout/MainLayout";
 import AllEmployee from "../Pages/AllEmployee";
 import AssignTask from "../Pages/AssignTask";
 import Tasks from "../Pages/Tasks";
+import AddEmployee from "../Pages/AddEmployee";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/tasks',
                 element: <Tasks></Tasks>
+            },
+            {
+                path: '/add-employee',
+                element: <AddEmployee></AddEmployee>
             }
         ]
     }

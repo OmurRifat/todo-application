@@ -8,9 +8,7 @@ const AuthProvider = ({ children }) => {
     const [allEmployee, setAllEmployee] = useState([]);
 
     useEffect(() => {
-        fetch('employeData.json')
-            .then(res => res.json())
-            .then(data => setAllEmployee(data))
+        setAllEmployee(localStorage.getItem('employee') ? JSON.parse(localStorage.getItem('employee')) : []);
     }, [])
     const authInfo = { allEmployee, setAllEmployee };
     return (

@@ -5,7 +5,7 @@ import DetailsModal from './DetailsModal';
 // eslint-disable-next-line react/prop-types
 const Employee = ({ employee }) => {
     // eslint-disable-next-line react/prop-types
-    const { name, imgUrl, designation } = employee;
+    const { employeeName, photoUrl, employeeDesignation } = employee;
     // eslint-disable-next-line no-unused-vars
     const [isOpen, setIsOpen] = useState(false);
 
@@ -14,10 +14,10 @@ const Employee = ({ employee }) => {
     }
     return (
         <div className="card card-side bg-tertiary bg-opacity-70 shadow-xl p-2">
-            <figure><img className=' rounded-full w-36' src={ `${imgUrl}` } alt="Movie" /></figure>
+            <figure><img className=' rounded-full w-36' src={ `${photoUrl}` } alt="Movie" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{ name }</h2>
-                <p>{ designation }</p>
+                <h2 className="card-title">{ employeeName }</h2>
+                <p>{ employeeDesignation }</p>
                 <div className="card-actions justify-end">
                     <button
                         type="button"

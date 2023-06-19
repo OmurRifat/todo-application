@@ -38,6 +38,7 @@ const MainLayout = () => {
                 <ul className="menu p-4 w-80 h-full bg-secondary text-base-content text-center">
                     {/* Sidebar content here */ }
                     <Link to="/tasks" className={ activeLink === "tasks" ? "active bg-slate-400 rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3 text-blue-800" : 'py-3 bg-tertiary rounded-md mb-2 hover:bg-slate-700 hover:text-white' } onClick={ () => handleLinkClick('tasks') }>Tasks</Link>
+                    <Link to="/add-employee" className={ activeLink === "add-employee" ? "active bg-slate-400 rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3 text-blue-800" : 'py-3 bg-tertiary rounded-md mb-2 hover:bg-slate-700 hover:text-white' } onClick={ () => handleLinkClick('add-employee') }>Add Employee</Link>
                     <Link to="/assign-task" className={ activeLink === "assign-task" ? "active bg-slate-400 rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3 text-blue-800" : 'py-3 bg-tertiary rounded-md mb-2 hover:bg-slate-700 hover:text-white' } onClick={ () => handleLinkClick('assign-task') }>Assign Task</Link>
                     <Link to="/all-employee" className={ activeLink === "all-employee" ? "active bg-slate-400 rounded-md drop-shadow shadow-inner text-base font-bold mb-2 py-3 text-blue-800" : 'py-3 bg-tertiary rounded-md mb-2 hover:bg-slate-700 hover:text-white' } onClick={ () => handleLinkClick('all-employee') }>All Employee</Link>
                 </ul>

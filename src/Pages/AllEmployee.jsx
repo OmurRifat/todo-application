@@ -8,9 +8,11 @@ const AllEmployee = () => {
     return (
         <div className=' grid lg:grid-cols-2 gap-4 lg:me-4 grid-cols-1 me-6'>
             {
-                allEmployee?.map(employee => <Employee
+                allEmployee.length > 0 ? allEmployee.map(employee => <Employee
                     key={ employee.id }
                     employee={ employee }></Employee>)
+                    :
+                    <h1 className='text-center text-2xl text-red-500'>No Employee Found</h1>
             }
         </div>
     );
