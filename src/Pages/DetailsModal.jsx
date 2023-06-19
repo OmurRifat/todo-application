@@ -106,7 +106,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                         <td className="text-black px-8 py-4 ">
                                             {
                                                 task?.map(task => <li
-                                                    key={ task.id }
+                                                    key={ task.taskId }
                                                 >{ task.taskName }</li>)
                                             }
                                             {/* small edit btn */ }

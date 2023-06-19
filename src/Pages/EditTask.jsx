@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-hot-toast';
-import { Dialog, Transition } from '@headlessui/react';
 import Input from './components/Input';
 import TextArea from './components/TextArea';
 
 const EditTask = ({ setIsOpen, isOpen, task }) => {
     const { employeeId, taskId, taskName, taskDescription } = task;
-    const { allEmployee } = useContext(AuthContext);
     const [employeeData, setEmployeeData] = useState([]);
+    const [allEmployee, setAllEmployee] = useState([]);
+    useEffect(() => {
+        setAllEmployee(localStorage.getItem('employee') ? JSON.parse(localStorage.getItem('employee')) : []);
+    }, []);
     const {
         register,
         handleSubmit,
@@ -91,8 +92,6 @@ const EditTask = ({ setIsOpen, isOpen, task }) => {
                         </select>
                         <Input filedName='Task Name' register={ register } defaultValue={ `${taskName}` } registeredName="taskName" type='text' placeholder='Please re-enter the task name' />
                         <TextArea filedName='Task Description' register={ register } defaultValue={ `${taskDescription}` } registeredName="taskDescription" type='text' placeholder='Please re-enter the task description' />
-                        {/* <legend className=' mb-2'>Task Description</legend>
-                        <textarea required { ...register("taskDescription") } className="textarea w-full max-w-sm mb-4" defaultValue={ `${taskDescription}` }></textarea> */}
                         <br />
                         <button className=' btn btn-primary mb-10' type='submit'>Assign</button>
                     </form>

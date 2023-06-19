@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import EditTask from './EditTask';
 
-const Task = ({ task }) => {
-    const { name, id, taskName, taskDescription, employeeId } = task;
+const Task = ({ task, setTaskData }) => {
+    const { taskId, taskName, taskDescription, employeeId } = task;
     let [isOpen, setIsOpen] = useState(false)
     const [employeeData, setEmployeeData] = useState([]);
     function openModal() {
@@ -14,9 +13,9 @@ const Task = ({ task }) => {
     function deleteTask() {
         if (window.confirm('Are you sure you want to delete this task?')) {
             let taskData = JSON.parse(localStorage.getItem('task'));
-            let newTaskData = taskData.filter(task => task.id !== id);
+            let newTaskData = taskData.filter(task => task.taskId !== taskId);
             localStorage.setItem('task', JSON.stringify(newTaskData));
-            window.location.reload();
+            setTaskData(newTaskData);
         }
     }
     useEffect(() => {

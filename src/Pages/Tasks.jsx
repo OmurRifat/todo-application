@@ -12,6 +12,7 @@ const Tasks = () => {
             {
                 taskData ? taskData?.map(task => <Task
                     key={ task.taskId }
+                    setTaskData={ setTaskData }
                     task={ task }></Task>) :
                     <h1 className=' text-center'>No Task Assigned Yet</h1>
             }
