@@ -1,17 +1,21 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const DetailsModal = ({ setIsOpen, employee }) => {
-    // eslint-disable-next-line react/prop-types
-    const { employeeName, photoUrl, employeeDesignation, employeeEmail, employeeNumber, employeeId } = employee;
-    function closeModal() {
-        setIsOpen(false)
-    }
+const DetailsModal = (props, ref) => {
+    const [modalState, setModalState] = useState(false);
+    const { employeeName, photoUrl, employeeDesignation, employeeEmail, employeeNumber, employeeId } = props.employee;
+    useImperativeHandle(ref, () => ({
+        openModal: () => setModalState(true)
+    }))
     //get the data from local storage according to the name
     const taskData = JSON.parse(localStorage.getItem('task'));
     const task = taskData?.filter(task => task.employeeId == employeeId);
+    if (!modalState) return null;
     return (
         <div
             className="fixed  flex justify-center  items-center  top-0 left-0 right-0 z-50 inset-0 backdrop-blur-sm bg-opacity-40  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -19,7 +23,7 @@ const DetailsModal = ({ setIsOpen, employee }) => {
             <div className="relative w-full max-w-md max-h-full">
                 <div className="relative bg-[#80bfb8] rounded-xl shadow">
                     <button
-                        onClick={ closeModal }
+                        onClick={ () => setModalState(false) }
                         type="button"
                         className="absolute top-3  right-2.5 text-[red] bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                     >
@@ -109,7 +113,6 @@ const DetailsModal = ({ setIsOpen, employee }) => {
                                                     key={ task.taskId }
                                                 >{ task.taskName }</li>)
                                             }
-                                            {/* small edit btn */ }
                                             {
                                                 task?.length > 0 ? <Link
                                                     type="button"
@@ -132,4 +135,4 @@ const DetailsModal = ({ setIsOpen, employee }) => {
     );
 };
 
-export default DetailsModal;
+export default forwardRef(DetailsModal);
